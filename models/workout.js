@@ -6,15 +6,27 @@ const workoutSchema = new Schema({
   name: {
     type: String,
     trim: true,
-    required: "Enter a name for transaction",
+    required: "Enter the name of your workout",
   },
-  value: {
+  type: {
+    type: String,
+    enum: ["resistance, cardio"],
+  },
+  duration: {
     type: Number,
-    required: "Enter an amount",
+    required: "Must enter a duration time",
   },
-  date: {
-    type: Date,
-    default: Date.now,
+  weight: {
+    type: Number,
+    required: "Must include weight of set",
+  },
+  reps: {
+    type: Number,
+    required: "Must include amount of reps completed",
+  },
+  sets: {
+    type: Number,
+    required: "Must include amount of sets completed",
   },
 });
 
