@@ -3,8 +3,8 @@ const Workout = require("../models/workout");
 
 //creates new workout
 //prefixed in server.js so only need to add the second part of the path Ex: in server.js already have /api so second path name here would concatonate /api/workouts
-router.post("/workouts", ({ body }, res) => {
-  Workout.create(body)
+router.post("/workouts", (req, res) => {
+  Workout.create({})
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -15,7 +15,7 @@ router.post("/workouts", ({ body }, res) => {
 });
 
 //gets all workouts
-router.get("/api/workouts", (req, res) => {
+router.get("/workouts", (req, res) => {
   Workout.find({})
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -30,7 +30,7 @@ router.get("/workouts", (req, res) => {
   Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "$excercises.duration" },
+        totalDuration: { $sum: "$duration" },
       },
     },
   ])
@@ -40,7 +40,7 @@ router.get("/workouts", (req, res) => {
     .limit(1)
     .then((lastWorkout) => {
       console.log(lastWorkout);
-      res.json(lastWorkout);
+      res.send(lastWorkout[0]);
     })
     .catch((err) => {
       console.log(err);
@@ -53,7 +53,7 @@ router.get("/workouts/range", (req, res) => {
   Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "$exercises.duration" },
+        totalDuration: { $sum: "$duration" },
       },
     },
   ])
@@ -63,7 +63,7 @@ router.get("/workouts/range", (req, res) => {
     .limit(7)
     .then((lastSeven) => {
       console.log(lastSeven);
-      res.json(lastSeven);
+      res.send(lastSeven);
     })
     .catch((err) => {
       console.log(err);
@@ -79,7 +79,7 @@ router.put("/workouts/:id", (req, res) => {
     },
     {
       $push: {
-        exercises: {
+        Workout: {
           type: req.body.type,
           name: req.body.name,
           distance: req.body.distance,
