@@ -14,19 +14,15 @@ const workoutSchema = new Schema({
   },
   duration: {
     type: Number,
-    required: "Must enter a duration time",
   },
   weight: {
     type: Number,
-    required: "Must include weight of set",
   },
   reps: {
     type: Number,
-    required: "Must include amount of reps completed",
   },
   sets: {
     type: Number,
-    required: "Must include amount of sets completed",
   },
 });
 
