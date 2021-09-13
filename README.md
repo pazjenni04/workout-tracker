@@ -34,11 +34,15 @@ If the user decides to choose 'Continue Workout' they will then be redirect to t
 
 ![The following image displays the "Continue Workout" page](images\continue-workout_img.PNG)
 
-Once on this page, the user will be prompted with questions in
+Once on this page, the user will be prompted with questions again to complete in order to update their tracked exercises. Once the user has completed either options, they can click the "Complete" button and it will redirect them to the homepage and will display their most up-to-date stats.
+
+## **Demo**
+
+![The following is a demo of the entry process](images\workout-tracker.gif)
 
 ## **Technologies**
 
-- JavaScript, node.js, and inquirer package
+- JavaScript, node.js, express package, mongoose package, mongodb, and morgan package
 
 ## **Questions**
 
@@ -48,9 +52,6 @@ _Questions? Feel free to contact me._
 - Via [Email](pazjenni1331@gmail.com)
 
 # Links
-
-To see a demonstration of this application, feel free to watch the following link.
-https://youtu.be/dJ63_K8adxU
 
 # License
 
